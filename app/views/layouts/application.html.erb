@@ -10,22 +10,25 @@
   </head>
 
   <body>
+    <div class="container">
+      <BR>
+      <p>
+        <%= flash.notice %>
+        <%= flash.alert %>
+      </p>
+      <BR>
+        <nav>
+          <% if user_signed_in? %>
+            <%= button_to t("menu.logout"), sign_out_sessions_path, method: :delete %>
+            <%= link_to t("menu.new_ad"), new_ad_path %>
+          <% else %>
+            <%= link_to t("menu.signup"), new_user_path %>
+            <%= link_to t("menu.signin"), new_session_path %>
+          <% end %>
+        </nav>
+      <BR>
+        <%= yield %>
 
-  <p>
-    <%= flash.notice %>
-    <%= flash.alert %>
-  </p>
-
-    <nav>
-      <% if user_signed_in? %>
-        <%= button_to t("menu.logout"), sign_out_sessions_path, method: :delete %>
-        <%= link_to t("menu.new_ad"), new_ad_path %>
-      <% else %>
-        <%= link_to t("menu.signup"), new_user_path %>
-        <%= link_to t("menu.signin"), new_session_path %>
-      <% end %>
-    </nav>
-
-    <%= yield %>
+    </div>
   </body>
 </html>
