@@ -1,0 +1,22 @@
+<h1>Anúncio</h1>
+
+<div class="field">
+    <strong>Titulo:</strong>
+    <%= @ad.title %>
+  </div>
+
+  <div class="field"> 
+    <strong>Descrição:</strong>
+    <%= @ad.description %>
+  </div>
+
+   <div class="field">
+    <strong>Preço:</strong>
+    <%= @ad.price %>
+  </div>
+
+  <BR>
+  <div>
+    <%= link_to ' Voltar ', root_path,  class: 'btn btn-secondary '  %>
+ 
+  </div>

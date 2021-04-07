@@ -5,6 +5,10 @@ class AdsController < ApplicationController
     @ad = Ad.new
   end
 
+  def show
+    @ad =  current_user.ads.find(params[:id])
+  end
+
   def edit
     @ad = current_user.ads.find(params[:id])
   end
@@ -13,13 +17,15 @@ class AdsController < ApplicationController
     @ad = current_user.ads.build(ad_params)
     if @ad.save
       redirect_to root_path, notice: "Anúncio criado com sucesso"
+    else
+      render :new
     end
   end
 
   def update
     @ad = current_user.ads.find(params[:id])
     if @ad.update(ad_params)
-      redirect_to edit_ad_path(@ad), notice: "Anúncio atualizado com sucesso"
+      redirect_to root_path(@ad), notice: "Anúncio atualizado com sucesso"
     else
       render :edit
     end
@@ -28,6 +34,6 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.require(:ad).permit(:title, :description, :prince)
+    params.require(:ad).permit(:title, :description, :price, :user_id)
   end
 end

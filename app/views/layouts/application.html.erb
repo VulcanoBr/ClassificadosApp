@@ -11,21 +11,27 @@
 
   <body>
     <div class="container">
+           <nav  class="navbar navbar-light bg-dark">
+              <a class="navbar-brand" >
+                <img src="https://hermes.digitalinnovation.one/courses/badge/7425308d-fd51-4b5a-b815-abe8c61d2623.png" width=60 height=60 alt="" loading="auto">
+               <strong>   DIO INNOVATION ONE </strong>
+              </a>
+
+        
+          <% if user_signed_in? %>
+            <%= button_to t("menu.logout"), sign_out_sessions_path, method: :delete %>
+            <%= link_to t("menu.new_ad"), new_ad_path, class: "btn btn-success" %>
+          <% else %>
+            <%= link_to t("menu.signup"), new_user_path, class: "btn btn-info" %>
+            <%= link_to t("menu.signin"), new_session_path, class: "btn btn-info" %>
+          <% end %>
+        </nav>
+     
       <BR>
       <p>
         <%= flash.notice %>
         <%= flash.alert %>
       </p>
-      <BR>
-        <nav>
-          <% if user_signed_in? %>
-            <%= button_to t("menu.logout"), sign_out_sessions_path, method: :delete %>
-            <%= link_to t("menu.new_ad"), new_ad_path %>
-          <% else %>
-            <%= link_to t("menu.signup"), new_user_path %>
-            <%= link_to t("menu.signin"), new_session_path %>
-          <% end %>
-        </nav>
       <BR>
         <%= yield %>
 

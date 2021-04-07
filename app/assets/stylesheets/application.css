@@ -15,6 +15,7 @@
  *= require_self
  */
 
+
 .field_with_errors {
   color: red;
   display: inline-block;
@@ -22,4 +23,9 @@
 
 .field_with_errors input {
   border: 2px solid red;
+}
+
+.navbar-brand  {
+  margin-right: 15px;
+  color: white;
 }

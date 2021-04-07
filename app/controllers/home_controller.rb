@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
-  def show
-    @ads = Ad.all
+
+  def index
+    @ads =  current_user.ads.where(params[:user_id])
+
   end
+
 end

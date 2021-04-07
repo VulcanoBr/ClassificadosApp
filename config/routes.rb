@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root to: "home#show"
+  root to: "home#index"
 
   resources :users, only: [:new, :create]
 
-  resources :ads, only: [:new, :create, :edit, :update]
+  resources :ads, only: [:new, :create, :edit, :update, :show]
 
   # login
   resources :sessions, only: [:new, :create] do
